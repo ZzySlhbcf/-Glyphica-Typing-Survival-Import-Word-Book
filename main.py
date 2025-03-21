@@ -1,4 +1,5 @@
 import pandas as pd
+import winreg
 import re
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 word_list = [[] for i in range(4, 9)]
@@ -10,7 +11,10 @@ def csv_writer():
         dictionary[f"{i}-LETTER WORDS"] = word_list[i-4]
     df_write = pd.DataFrame.from_dict(dictionary, orient='index')
     df_write = df_write.T
-    df_write.to_csv("English_Chinese_Translation_wordlist.csv", encoding='utf-8', index=False)
+    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\\Microsoft\Windows\\CurrentVersion\\Explorer\\Shell Folders')
+    expanded_path, _ = winreg.QueryValueEx(key, "Personal")
+    path = expanded_path+r"\\Sphere Saves\\aliasblack.glyphica\localization\\English_Chinese_Translation_wordlist.csv"
+    df_write.to_csv(path, encoding='utf-8', index=False)
 
 
 def word_checker(word: str) -> bool:
