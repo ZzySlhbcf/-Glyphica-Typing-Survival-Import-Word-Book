@@ -10,7 +10,7 @@ def csv_writer():
         dictionary[f"{i}-LETTER WORDS"] = word_list[i-4]
     df_write = pd.DataFrame.from_dict(dictionary, orient='index')
     df_write = df_write.T
-    df_write.to_csv("schinese_wordlist.csv", encoding='utf-8', index=False)
+    df_write.to_csv("English_Chinese_Translation_wordlist.csv", encoding='utf-8', index=False)
 
 
 def word_checker(word: str) -> bool:
