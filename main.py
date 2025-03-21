@@ -33,7 +33,6 @@ def no_comma(chinese: str) -> list:
         return ["；".join(translation_list)]
     res = []
     while len(translation_list) > 3:
-        print(translation_list)
         if len(translation_list) == 4:
             res.append("；".join(translation_list[0:2]))
             res.append("；".join(translation_list[2:]))
