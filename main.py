@@ -1,12 +1,12 @@
 import pandas as pd
 import re
 letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-word_list = [[] for i in range(4, 11)]
+word_list = [[] for i in range(4, 9)]
 
 
 def csv_writer():
     dictionary = {}
-    for i in range(4, 11):
+    for i in range(4, 9):
         dictionary[f"{i}-LETTER WORDS"] = word_list[i-4]
     df_write = pd.DataFrame.from_dict(dictionary, orient='index')
     df_write = df_write.T
@@ -14,7 +14,7 @@ def csv_writer():
 
 
 def word_checker(word: str) -> bool:
-    if len(word) > 10 or len(word) < 4:
+    if len(word) > 8 or len(word) < 4:
         return False
     for letter in word:
         if letter not in letters:
