@@ -11,7 +11,7 @@ def csv_writer():
         dictionary[f"{i}-LETTER WORDS"] = word_list[i-4]
     df_write = pd.DataFrame.from_dict(dictionary, orient='index')
     df_write = df_write.T
-    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r'Software\\Microsoft\Windows\\CurrentVersion\\Explorer\\Shell Folders')
+    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\\Microsoft\Windows\\CurrentVersion\\Explorer\\Shell Folders")
     expanded_path, _ = winreg.QueryValueEx(key, "Personal")
     path = expanded_path+r"\\Sphere Saves\\aliasblack.glyphica\localization\\English_Chinese_Translation_wordlist.csv"
     df_write.to_csv(path, encoding='utf-8', index=False)
